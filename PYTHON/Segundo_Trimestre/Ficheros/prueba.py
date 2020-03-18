@@ -1,59 +1,89 @@
 import pickle
 
+import requests
+
 if __name__ == '__main__':
-    cadena1 = 'Puedes comerme los huevos'
-    cadena2 = 'Oh yes'
+    # ciudad = input("Ciudad de la que quiere conocer el pronóstico del tiempo en los próximos 5 días: ")
 
-    archivo = open('fichero2.txt', 'w')
-    archivo.write(cadena1 + "\n")
-    archivo.write(cadena2 + "\n")
-    archivo.close()
+    url = "https://api.openweathermap.org/data/2.5/forecast"
+    params = {"q": "london", 'appid': '7244cf3744b6759cb242a1dda9702905', "units": "metric", "lang": "es"}
 
-    archivo = open('fichero2.txt', 'r')
-    while True:
-        linea = archivo.readline()
-        if not linea:
-            break
-        print(linea)
-    archivo.close()
+    response = requests.get(url, params=params)
+    datos = response.json()
 
-    lista = [1, 2, 3, 4, 5, 6]
-    lista2 = ['lunes', 'martes', 'miercoles', 'jueves', 'viernes']
-    archivo = open('fichero3.txt', 'w')
-    archivo.writelines(lista2)
-    archivo.close()
+    # petición
 
-    archivo = open('fichero3.txt', 'r')
-    while True:
-        linea = archivo.readline()
-        if not linea:
-            break
-        print(f"{linea}")
-    archivo.close()
+    for m in datos['list']:
 
-    # Declara lista
-    lista = ['Perl', 'Python', 'Ruby']
+        nombre_archivo = (m[0]["dt_txt"][:10])
+        temperatura_max = m['main']['temp']
 
-    # Abre archivo binario para escribir
-    archivo = open('lenguajes.dat', 'wb')
+    f = open(dia+".html", 'w')
+    mensaje = """
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-    # Escribe lista en archivo
-    pickle.dump(lista, archivo)
+        <html xmlns="http://www.w3.org/1999/xhtml">
 
-    # Cierra archivo
-    archivo.close()
+            <head>
 
-    # Borra de memoria la lista
-    del lista
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+                 
+                <title>Demystifying Email Design</title>
+                 
+                <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    # Abre archivo binario para leer
-    archivo = open('lenguajes.dat', 'rb')
+            </head>
+            
+            <body>
+            
+            <h1> temperatura maxima {dia}
+            
+            <table>
+                  <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                </table>
+            
+            </body>
 
-    # carga lista desde archivo
-    lista = pickle.load(archivo)
-
-    # Muestra lista
-    print(lista)
-
-    # Cierra archivo
-    archivo.close()
+            </html>
+"""
+    f.write(mensaje)
+    f.close()
