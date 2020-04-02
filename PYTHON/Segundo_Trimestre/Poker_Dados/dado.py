@@ -13,7 +13,6 @@ class Dado:
         self.__valores = ("Negro", "Rojo", "J", "Q", "K", "As")
         self.__valor = random.choice(self.__valores)
 
-
     def valores(self):
         return self.__valores
 
@@ -25,7 +24,6 @@ class Dado:
     @valor.setter
     def valor(self, value):
         self.__valor = value
-
 
     def tirada(self):
         """

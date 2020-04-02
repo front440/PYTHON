@@ -43,9 +43,8 @@ class Fecha:
         self.__mes = mes
         self.__anio = anio
 
-        #if not Fecha.fecha_correcta(self):
-            #raise Fecha_incorrecta("Fecha incorrecta")
-
+        # if not Fecha.fecha_correcta(self):
+        # raise Fecha_incorrecta("Fecha incorrecta")
 
     @property
     def dia(self):
@@ -227,16 +226,15 @@ class Fecha:
         :return:
         """
         meses = (
-        "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre",
-        "Diciembre")
+            "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre",
+            "Noviembre",
+            "Diciembre")
         return meses[self.__mes - 1]
 
 
 if __name__ == '__main__':
-
-    f1 = Fecha(10, 2, 2020)
+    f1 = Fecha(40, 2, 2020)
     f2 = Fecha(31, 3, 2020)
-
 
     print(f"Fecha: ", f1)
     print("¿La fecha introducida es correcta? ", f1.fecha_correcta())
