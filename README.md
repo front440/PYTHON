@@ -1,3 +1,4 @@
+
 # Bienvenidos a mi repositorio
 
 Hola! Mi nombre es **Francisco Javier Campos Gutiérrez**, soy estudiante de Desarrollo de Aplicaciones Web en [IES Grán Capitán](https://informatica.iesgrancapitan.org/), Córdoba.
@@ -26,3 +27,5 @@ En este trimestre ya comprendidas los componentes del lenguaje y sus metodologí
  - **Colecciones**
  - **Ficheros**
  - **Excepciones**
+
+En concreto para el tema de Programación Orientada a Objetos hacemos uso del Libro de Python dedicado a ello mi profesor [Rafael del Castillo](https://github.com/rdelcastillo).
