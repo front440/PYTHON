@@ -10,11 +10,12 @@
 Simplificar la fracción.
 """
 
+
 class Fraccion:
     '''
     Método constructor de la clase.
     '''
-    
+
     def __init__(self, numerador, denominador):
         '''
         
@@ -24,28 +25,29 @@ class Fraccion:
         self.__numerador = numerador
         self.__denominador = denominador
 
-    #Propiedades. Getter y setter.
+    # Propiedades. Getter y setter.
     @property
     def numerador(self):
         return self.__numerador
-    
+
     @numerador.setter
     def numerador(self, value):
         self.__numerador = value
-        
+
     @property
     def denominador(self):
         return self.__denominador
-    
+
     @denominador.setter
     def denominador(self, value):
         try:
-           if self.__denominador > 0:
+            if self.__denominador > 0:
                 self.__denominador = value
 
         except ZeroDivisionError:
             print("No se puede dividir entre 0")
             exit(1)
+
     '''
         if self.__denominador != 0:
             self.__denominador = value
@@ -53,7 +55,7 @@ class Fraccion:
             print("No se puede dividir por 0.")
     '''
 
-    #Metodos
+    # Metodos
     def __str__(self):
         return f"{self.__numerador} / {self.__denominador}"
 
@@ -73,12 +75,12 @@ class Fraccion:
         return f"{self.numerador * numero} / {self.denominador}"
 
     def multiplica_por_otra_fraccion(self, otra_fraccion):
-        return  f"{self.numerador * otra_fraccion.numerador} / {self.denominador * otra_fraccion.denominador}"
+        return f"{self.numerador * otra_fraccion.numerador} / {self.denominador * otra_fraccion.denominador}"
 
-    def suma_fraccion(self,otra_fraccion):
+    def suma_fraccion(self, otra_fraccion):
         return f"{self.numerador * otra_fraccion.denominador + self.denominador * otra_fraccion.numerador} / {self.denominador * otra_fraccion.denominador}"
 
-    def resta_fraccion(self,otra_fraccion):
+    def resta_fraccion(self, otra_fraccion):
         return f"{self.numerador * otra_fraccion.denominador - self.denominador * otra_fraccion.numerador} / {self.denominador * otra_fraccion.denominador}"
 
     def simplifica_fraccion(self):
@@ -97,12 +99,12 @@ class Fraccion:
 
 
 if __name__ == '__main__':
-    f1 = Fraccion(60,48)
-    f2 = Fraccion(9,10)
+    f1 = Fraccion(60, 48)
+    f2 = Fraccion(9, 10)
 
     print("Mostramos fraccion 1 y 2.")
-    print("Fraccion f1: ",f1)
-    print("Fraccion f2: ",f2)
+    print("Fraccion f1: ", f1)
+    print("Fraccion f2: ", f2)
     print()
     print("Mostramos el resultado de la fraccion f1:", f1.resultado())
     print("Mostramos el resultado de la fraccion f2:", f2.resultado())
@@ -120,11 +122,6 @@ if __name__ == '__main__':
     print(f"Resultado de restar {f1} - {f2}: ", f1.resta_fraccion(f2))
     print(f"Resultado de restar {f2} - {f1}: ", f2.resta_fraccion(f1))
     f1.simplifica_fraccion()
-    print(f"Resultado de simplificar la fraccion {f1}: ",f1)
+    print(f"Resultado de simplificar la fraccion {f1}: ", f1)
     f2.simplifica_fraccion()
-    print(f"Resultado de simplificar la fraccion {f2}: ",f2)
-
-
-
-    
-    
+    print(f"Resultado de simplificar la fraccion {f2}: ", f2)

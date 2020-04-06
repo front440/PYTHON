@@ -201,7 +201,7 @@ if __name__ == '__main__':
         print("CLASE TIEMPO")
         h = int(input("Introduce valor para Hora:\t\t"))
         m = int(input("Introduce valor para Minuto:\t"))
-        s = int(input("Introduce valor para segundo:\t"))
+        s = int(input("Introduce valor para Segundo:\t"))
 
         # Creamos el objeto
         t = Tiempo(h, m, s)

@@ -108,21 +108,21 @@ class Fecha:
     def __gt__(self, other):
         if self.__anyo != other.anyo:
             return self.__anyo > other.anyo
-        elif self.__mes != other.mes:
-            return self.__mes > other.mes
+        elif self.__mes != other.__mes:
+            return self.__mes > other.__mes
         else:
             return self.__dia > other.dia
 
     def __ge__(self, other):
         if self.__anyo != other.anyo:
             return self.__anyo >= other.anyo
-        elif self.__mes != other.mes:
-            return self.__mes >= other.mes
+        elif self.__mes != other.__mes:
+            return self.__mes >= other.__mes
         else:
             return self.__dia >= other.dia
 
     def __eq__(self, other):
-        return (self.__dia == other.dia) and (self.__mes == other.mes) and (self.__anyo == other.anyo)
+        return (self.__dia == other.dia) and (self.__mes == other.__mes) and (self.__anyo == other.anyo)
 
     # Métodos estáticos
 

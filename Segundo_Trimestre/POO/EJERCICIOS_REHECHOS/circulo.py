@@ -32,9 +32,7 @@ class Circulo:
     def __init__(self, radio):
         self.__radio = radio
 
-
     # geters y seters
-
 
     @property
     def radio(self):
@@ -49,42 +47,35 @@ class Circulo:
     def __str__(self):
         return f"Soy un círculo de radio {self.__radio} metros. Ocupo un área de {c1.area()} metros cuadrados"
 
-
-
-    def area (self):
+    def area(self):
         """
         # metodo para calcular area
         :return:
         """
-        return math.pi * math.pow(self.__radio,2)
+        return math.pi * math.pow(self.__radio, 2)
 
     def crece(self, tamanio):
         if (self.__radio < 0):
-           print("curro tiene un micropene")
+            print("curro tiene un micropene")
         self.__radio *= tamanio
         return self.__radio
 
     def mengua(self, tamanio):
-       if self.__radio < 0:
-           print("curro tiene un micropene")
+        if self.__radio < 0:
+            print("curro tiene un micropene")
 
-       return self.__radio - tamanio
+        return self.__radio - tamanio
 
 
 if __name__ == '__main__':
-
-
     c1 = Circulo(2)
 
     print(c1)
-    print("area",c1.area())
+    print("area", c1.area())
     print()
     print("Circunferencia despues de aumentar 27 veces su radio", c1.crece(27))
-    print("area",c1.area())
+    print("area", c1.area())
     print()
-    print("Circunferencia despues de menguar 10 veces su radio",c1.mengua(10))
+    print("Circunferencia despues de menguar 10 veces su radio", c1.mengua(10))
     print()
     print("Estado final de la circunferencia", c1.area())
-
-
-

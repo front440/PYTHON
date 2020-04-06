@@ -15,7 +15,6 @@ import sys
 
 
 class DimensionRectanguloError(Exception):
-
     """
     :exception que se lanza cuando o la base o la altura exceden de los limites establecidos
     """
@@ -25,21 +24,17 @@ class DimensionRectanguloError(Exception):
         self.mensaje_error = mensaje_error
 
 
-
 class Rectangulo:
-
     # definimos constantes
     LADO_MAXIMO = 10
     NUM_RECTANGULOS = 0
 
     # creamos el constructor
 
-
     def __init__(self, base, altura):
         self.base = base
         self.altura = altura
         Rectangulo.NUM_RECTANGULOS += 1
-
 
     # esto sería el getter (observador) en java
     @property
@@ -51,7 +46,6 @@ class Rectangulo:
     def base(self, base):
         Rectangulo.__comprueba_lado(base)
         self.__base = base
-
 
     @property
     def altura(self):
@@ -75,13 +69,12 @@ class Rectangulo:
             str += "\n"
         return str
 
-
     def perimetro(self):
         """
         Método para calcular el perimetro
         :return:
         """
-        return  2 * (self.__base + self.altura)
+        return 2 * (self.__base + self.altura)
 
     def area(self):
         """
@@ -99,14 +92,13 @@ class Rectangulo:
         """
         return self.__altura == otro_rectangulo.altura and self.__base == otro_rectangulo.base
 
-    def compara_area(self,otro_rectangulo):
+    def compara_area(self, otro_rectangulo):
         """
         Para comparar 2 rectangulos debemos restar sus áreas
         :param otro_rectangulo:
         :return:
         """
         return self.area() - otro_rectangulo.area()
-
 
     @staticmethod
     def rectangulos_creados():
@@ -116,12 +108,14 @@ class Rectangulo:
         :return: numero de rectángulos
         """
         return Rectangulo.NUM_RECTANGULOS
+
     """
     ESTA FUNCIÓN YA NO VALE NI PARA DAR X CULO
     @staticmethod
     def es_lado_correcto(value):
         return isinstance(value, int) and 0 < value <= Rectangulo.LADO_MAXIMO
     """
+
     @staticmethod
     def __comprueba_lado(value):
         if not isinstance(value, int):
@@ -143,7 +137,8 @@ class Rectangulo:
             return Rectangulo(self.__base * other, self.__altura)
         else:
             return Rectangulo(self.base, self.altura * other)
-        return self.area()*other()
+        return self.area() * other()
+
     def __rmul__(self, other):
         """
         sobrecarga cuando para el operador multiplicacion cambiando el orden
@@ -169,6 +164,7 @@ class Rectangulo:
         """
         assert isinstance(other, Rectangulo)
         return self.area() <= other()
+
     def __eq__(self, other):
         """
         sobrecarga cuando los rectangulos son iguales
@@ -177,10 +173,6 @@ class Rectangulo:
         """
         assert isinstance(other, Rectangulo)
         return self.area() == other()
-
-
-
-
 
     # Tenga un método (guardar) para guardar en un fichero el objeto actual usando pickle.
     def guarda(self, fichero):
@@ -191,17 +183,17 @@ class Rectangulo:
         """
         try:
             fichero = open(fichero, "wb")
-            pickle.dump(self,fichero)
+            pickle.dump(self, fichero)
             fichero.close()
             return True
         except:
-            print("No se ha podido guardar el fichero.", fichero,file = sys.stderr)
+            print("No se ha podido guardar el fichero.", fichero, file=sys.stderr)
             return False
 
-    #Tenga un método (recuperar) para recuperar un objeto Rectángulo almacenado en un fichero usando pickle.
+    # Tenga un método (recuperar) para recuperar un objeto Rectángulo almacenado en un fichero usando pickle.
     def recupera(self, fichero):
         try:
-            fichero = open(fichero,"rb")
+            fichero = open(fichero, "rb")
             r = pickle.load(fichero)
             fichero.close()
             # asignamos el estado al objeto actual
@@ -209,12 +201,11 @@ class Rectangulo:
             self.altura = r.altura
             return True
         except:
-            print("No se ha podido recuperar el fichero.", fichero, file = sys.stderr)
+            print("No se ha podido recuperar el fichero.", fichero, file=sys.stderr)
             return False
 
 
 if __name__ == '__main__':
-
 
     # creamos un objeto de la clase rectangulo
 
@@ -234,9 +225,6 @@ if __name__ == '__main__':
         print("Mensaje error:", exc.mensaje_error)
         exit(2)
 
-
-
-
     print("Test para comprobar lo métodos de la clase Rectángulo")
     print("Mostramos r1")
     print(r1)
@@ -247,8 +235,8 @@ if __name__ == '__main__':
     print("Perímetro del rectángulo r1:", r1.perimetro())
     print("Perímetro del rectángulo r2:", r2.perimetro())
     print("-----------------------------------------------------")
-    print("Área de r1: ",r1.area())
-    print("Área de r2: ",r2.area())
+    print("Área de r1: ", r1.area())
+    print("Área de r2: ", r2.area())
     print("-----------------------------------------------------")
     print("¿Son los dos rectángulos iguales? ", r1.es_gemelo(r2))
     print("-----------------------------------------------------")
@@ -256,10 +244,6 @@ if __name__ == '__main__':
     print("-----------------------------------------------------")
     print("¿Cuantos rectángulos tenemos? ", Rectangulo.NUM_RECTANGULOS)
     print("-----------------------------------------------------")
-    print("Guarda fichero: ",r1.guarda("rectangulo.bin"))
+    print("Guarda fichero: ", r1.guarda("rectangulo.bin"))
     print("-----------------------------------------------------")
-    print("Recuperamos fichero: ",r1.recupera("rectangulo.bin"))
-
-
-
-
+    print("Recuperamos fichero: ", r1.recupera("rectangulo.bin"))
